@@ -202,7 +202,7 @@ def extract_coordinates(original_file, new_file):
     os.remove(original_file)
     print(f"Deleted original file: {original_file}")
 
-for filenum in range(640, 1000):
+for filenum in range(978, 1000):
     if __name__ == "__main__":
         save_directory = "/Volumes/CAMELSDrive/DM_Posns"
         url = f"https://users.flatironinstitute.org/~camels/Sims/IllustrisTNG/LH/LH_{filenum}/snapshot_090.hdf5"
