@@ -28,11 +28,19 @@ def process_file(filenum):
 
     # File paths
     DMcoord_path = f"/Volumes/CAMELSDrive/DM_Posns/LH{filenum}_coordinates.hdf5"
-    output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs/CAMELS_DMRADEC_data_LH{filenum}.fits'
-    rand_output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs/CAMELS_DMRADEC_rand_LH{filenum}.fits'
+    output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs_z/CAMELS_DMRADEC_data_LH{filenum}.fits'
+    rand_output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs_z/CAMELS_DMRADEC_rand_LH{filenum}.fits'
 
     with h5py.File(DMcoord_path, 'r') as f:
         pos_dm = f['PartType1/Coordinates'][:]
+        
+        
+    ##### SAMPLING
+    num_samples = pos_dm.shape[0] // 100
+
+    sample_indices = np.random.choice(pos_dm.shape[0], size=num_samples, replace=False)
+    samp_pos_dm = pos_dm[sample_indices]
+    pos_dm=samp_pos_dm
 
     pos_dm[:, axis] += 10000
     r, theta, phi = cart_to_spherical(pos_dm[:, perp_ax[0]], pos_dm[:, perp_ax[1]], pos_dm[:, axis])
@@ -67,6 +75,6 @@ def process_file(filenum):
 
 
 if __name__ == "__main__":
-    filenums = range(500, 700)
+    filenums = range(0, 1000)
     with ProcessPoolExecutor(max_workers=4) as executor:
         executor.map(process_file, filenums)
