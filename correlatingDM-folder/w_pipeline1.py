@@ -646,6 +646,7 @@ class Correlate:
 					xi, varxi = nn.calculateXi(rr, dr=nr)
 				else:
 					xi, varxi = nn.calculateXi(rr)
+                  
 			else:
 				nn.process_cross(data1, data2)
 				rr.process_cross(rand1, rand2)

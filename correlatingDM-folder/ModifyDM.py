@@ -22,14 +22,14 @@ def spherical_to_ra_dec(theta, phi):
 
 # Task function for parallel execution
 def process_file(filenum):
-    axis = 2  # [x,y,z]
+    axis = 0  # [x,y,z]
     xyz = [[1, 2], [2, 0], [0, 1]]
     perp_ax = xyz[axis]
 
     # File paths
     DMcoord_path = f"/Volumes/CAMELSDrive/DM_Posns/LH{filenum}_coordinates.hdf5"
-    output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs_z/CAMELS_DMRADEC_data_LH{filenum}.fits'
-    rand_output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs_z/CAMELS_DMRADEC_rand_LH{filenum}.fits'
+    output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs_x/CAMELS_DMRADEC_data_LH{filenum}.fits'
+    rand_output_path = f'/Volumes/CAMELSDrive/DM_pipelineInputs_x/CAMELS_DMRADEC_rand_LH{filenum}.fits'
 
     with h5py.File(DMcoord_path, 'r') as f:
         pos_dm = f['PartType1/Coordinates'][:]
