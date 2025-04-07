@@ -3,7 +3,7 @@
 mkdir -p CAMELS_CONFIGSDM
 
 # Generate a list of numbers and pass them to xargs to execute in parallel
-seq 263 544| xargs -n 1 -P 2 -I {} bash -c '
+seq 10 100| xargs -n 1 -P 2 -I {} bash -c '
     # Record the start time
     START=$(date +%s)
     
