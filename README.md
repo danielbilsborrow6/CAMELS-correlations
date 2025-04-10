@@ -9,6 +9,7 @@ Pipeline to find correlation functions from ellipticities is build ontop of Harr
 ### Submodule information
 - `obtain-ellipticities-notebooks`
     - Download SUBFIND catalogues, filter galaxies and obtain ellipticities
+    - `find_ellipticities_to_pkl.py` processes DM density and galaxy data to obtain projected ellipticities
 - `ellipticities_LHsim`
     - projected ellipticity data for each LH sim in the IllustrisTNG suite of CAMELS. Each .pkl file contains data +x, +y and +z ellipticity projections for that sim.
 - `correlating-folder`
